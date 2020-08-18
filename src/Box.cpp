@@ -62,6 +62,14 @@ std::vector<sf::RectangleShape> Box :: renderRectangles (int width, int height) 
 	// Return a vector of rectangles rendered from the box
 	vector<sf::RectangleShape> rects;
 	sf::RectangleShape temp(sf::Vector2f(0,0));
+	temp.setSize(sf::Vector2f(width - 2, height -2 ));
+	for (int i = 0; i < getSize() * getSize(); i++) {
+		for (int j = 0; j < getSize() * getSize(); j++) {
+			temp.setPosition(sf::Vector2f(i * width, j * height));
+			temp.setFillColor(sf::Color::Blue);
+			rects.push_back(temp);
+		}
+	}
 	rects.push_back(temp);
 	return rects;
 }

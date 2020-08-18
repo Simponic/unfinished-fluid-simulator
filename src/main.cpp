@@ -9,8 +9,10 @@ int main() {
 
 	sf::RectangleShape rectangle(sf::Vector2f(0, 0));
 
-	Box box;
-	box.addDensities(0.01f);
+	vector<sf::RectangleShape> rectsDraw;
+
+	Box *box = new Box;
+	box->addDensities(0.01f);
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -21,17 +23,16 @@ int main() {
 			}
 		}
 
-		window.clear(sf::Color::Black);
-		rectangle.setFillColor(sf::Color::Blue);
-		rectangle.setPosition(sf::Vector2f(100, 100));
-		rectangle.setSize(sf::Vector2f(100, 100));
+		rectsDraw = box->renderRectangles(60, 60);
 
-		window.draw(rectangle);
+		window.clear(sf::Color::Black);
+		for (long unsigned int i = 0; i < rectsDraw.size(); i++) {
+			window.draw(rectsDraw.at(i));
+		}
 		window.display();
 
 	}
 
-	delete &box;
-
+	free(box);
 	return 0;
 }

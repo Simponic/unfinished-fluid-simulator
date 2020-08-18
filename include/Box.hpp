@@ -25,7 +25,7 @@ class Box {
 		float getDensity(const int x, const int y);
 
 		void addDensities(const float dt);
-		std::vector<sf::RectangleShape> renderRectangles (sf::RenderWindow &window);
+		std::vector<sf::RectangleShape> renderRectangles (int width, int height);
 
 		Box();
 		~Box();
