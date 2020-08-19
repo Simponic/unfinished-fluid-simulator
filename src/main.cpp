@@ -14,6 +14,12 @@ int main() {
 	Box *box = new Box;
 	box->addDensities(0.01f);
 
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 12; j++) {
+			box->setVelocityAtIndex(i, j, 10*sin(i)*cos(j) * (sin(i) * cos(j) < 0 ? -2 : 1));
+		}
+	}
+
 	while (window.isOpen()) {
 		sf::Event event;
 	
@@ -22,6 +28,8 @@ int main() {
 				window.close();
 			}
 		}
+
+		box->diffuse_bad(0.1f, 10);
 
 		rectsDraw = box->renderRectangles(60, 60);
 
