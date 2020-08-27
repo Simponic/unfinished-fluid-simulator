@@ -5,7 +5,7 @@ SRC_PATH = src
 BUILD_PATH = build
 BIN_PATH = $(BUILD_PATH)/bin
 
-# executable # 
+# executable #
 BIN_NAME = simulate
 
 # extensions #
@@ -22,7 +22,7 @@ OBJECTS = $(SOURCES:$(SRC_PATH)/%.$(SRC_EXT)=$(BUILD_PATH)/%.o)
 DEPS = $(OBJECTS:.o=.d)
 
 # flags #
-COMPILE_FLAGS = -std=c++11 -Wall -Wextra -g
+COMPILE_FLAGS = -std=c++17 -Wall -Wextra -g
 INCLUDES = -I include/ -I /usr/local/include
 # Space-separated pkg-config libraries used by this project
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system
