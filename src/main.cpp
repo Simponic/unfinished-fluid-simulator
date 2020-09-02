@@ -13,6 +13,8 @@ int main(void) {
 
     FluidGrid grid(1, 40, 0, 0);
     while (window.isOpen()) {
+        grid.addDensityAndForce(10, 10, 1, 10, 5);
+
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
@@ -22,7 +24,7 @@ int main(void) {
 
         window.clear(sf::Color::Black);
 
-        grid.addDensityAndForce(10, 10, 0.1, 0, 0);
+		grid.updateDensityField(.1);
         grid.renderFluid(window, sf::Color(0, 0, 0));
 
         window.display();

@@ -17,6 +17,7 @@ class VectorField {
 	public:
 		VectorField();
 		VectorField(const int width, const int height);
+		VectorField(VectorField &copy);
 		~VectorField();
 
 		void initializeVectors();
@@ -26,12 +27,20 @@ class VectorField {
 		void setYComponentAtIndex(const int x, const int y, const float value);
 		float getYComponentAtIndex(const int x, const int y);
 
+		vector< vector<float> > getXComponents();
+		vector< vector<float> > getYComponents();
+
 		int getWidth();
 		int getHeight();
 
-		void renderVectorField(sf::RenderWindow &window, const float tileWidth);
+		void setXBoundaries();
+		void setYBoundaries();
 
 		void addVectorSource(VectorField *b, const float dt);
+		VectorField* diffuse(const float diffusionK, const float dt, const int iterations);
+
+		void renderVectorField(sf::RenderWindow &window, const float tileWidth);
+
 };
 
 #endif // VECTORFIELD_HPP

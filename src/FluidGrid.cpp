@@ -27,7 +27,7 @@ void FluidGrid :: initializeFluidGridWithForce(const float Fx, const float Fy) {
     this->sVelField = new VectorField(this->gridSize + 2, this->gridSize + 2);
     this->sDensityField = new ScalarField(this->gridSize + 2, this->gridSize + 2);
 
-    // Define an area in the array where force will added
+    // Define an area in the array where force will be added
     int applyForceAreaXmin = 0.3f * this->gridSize;
     int applyForceAreaXmax = 0.5f * this->gridSize;
     int applyForceAreaYmin = 0.3f * this->gridSize;
@@ -104,17 +104,19 @@ void FluidGrid :: addDensityAndForce(const int x, const int y, const float densi
 void FluidGrid :: updateDensityField(const float dt) {
     // Update the density field by time step dt
 
-    ScalarField tempDensity(this->gridSize + 2, this->gridSize + 2);
-    ScalarField *temp; // Temporary swapping
-
     // Add the new fluid
     this->densityField->addScalarSource(sDensityField, dt);
 
     // Diffuse the fluid
+	this->densityField = this->densityField->diffuseScalarField(this->diffusionK, dt, this->iterations);
+
+    // Advect the density field through the vector field
+    this->densityField = this->densityField->advectScalarField(dt, this->sVelField);
 }
 
 void FluidGrid :: renderFluid(sf::RenderWindow &window, const sf::Color color) {
+	// Render the fluid grid
     int width = window.getSize().x;
-    this->sDensityField->renderScalarField(window, width / gridSize, color);
-    this->sVelField->renderVectorField(window, width / gridSize);
+    this->densityField->renderScalarField(window, width / gridSize, color);
+    this->velField->renderVectorField(window, width / gridSize);
 }

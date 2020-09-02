@@ -17,6 +17,7 @@ class FluidGrid {
         ScalarField* densityField;
         VectorField* sVelField; // Source velocity field
         ScalarField* sDensityField; // Source density field
+
     public:
         FluidGrid();
         FluidGrid(const float diffusionK, const int gridSize, const float Fx, const float Fy);

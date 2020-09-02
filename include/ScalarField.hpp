@@ -1,3 +1,4 @@
+#include "VectorField.hpp"
 #include <bits/stdc++.h>
 #include <SFML/Graphics.hpp>
 
@@ -14,6 +15,7 @@ class ScalarField {
     public:
         ScalarField();
         ScalarField(const int width, const int height);
+        ScalarField(ScalarField &copy);
         ~ScalarField();
 
         void initializeScalarField();
@@ -21,11 +23,14 @@ class ScalarField {
         int getWidth();
         int getHeight();
 
+        vector< vector<float> > getFieldValues();
+
         void setValueAtIndex(const int x, const int y, const float value);
         float getValueAtIndex(const int x, const int y);
 
         void setBoundaries();
-        void diffuseScalarField(const float diffusionK, const float dt, const int iterations);
+        ScalarField* diffuseScalarField(const float diffusionK, const float dt, const int iterations);
+        ScalarField* advectScalarField(const float dt, VectorField *vel);
         void addScalarSource(ScalarField *b, const float dt);
 
         void renderScalarField(sf::RenderWindow &window, const float tileWidth, const sf::Color color);
