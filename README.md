@@ -6,8 +6,9 @@ I did comment on most of the code to explain what I was thinking while writing i
 
 Resources I used while learning about fluids and such:
 
-* (https://www.cs.ubc.ca/~rbridson/fluidsimulation/fluids_notes.pdf)[This paper]
-* (https://pdfs.semanticscholar.org/847f/819a4ea14bd789aca8bc88e85e906cfc657c.pdf)[This other paper]
-* (https://www.mikeash.com/pyblog/fluid-simulation-for-dummies.html)[This document]
+* [This paper](https://www.cs.ubc.ca/~rbridson/fluidsimulation/fluids_notes.pdf)
+* [This other paper](https://pdfs.semanticscholar.org/847f/819a4ea14bd789aca8bc88e85e906cfc657c.pdf)
+* [This document](https://www.mikeash.com/pyblog/fluid-simulation-for-dummies.html)
+* [This repo](https://github.com/antoinefournier/Eulerian-Fluid-Simulation/blob/master/FluidSim/)
 
 
